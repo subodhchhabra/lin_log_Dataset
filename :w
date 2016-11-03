@@ -1,0 +1,12 @@
+import pandas as pd
+import sqlite3
+import csv
+import numpy as np
+
+db_connection = sqlite3.connect(":memory:")
+zip_codes_lat_long = pd.read_csv('info.data')
+zip_codes_lat_long.to_sql("TEST", db_connection)
+db_connection.commit()
+
+info = np.loadtxt('seed.csv', delimiter=',')
+print(info)
